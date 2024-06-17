@@ -1,0 +1,23 @@
+.container__post {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+}
+.contentCode {
+    margin-top: 24px;
+}
+.subTitleSlug {
+    color: #888888;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.footerSlug__container {
+    background-color: #171D1F;
+    height: 252px;
+    border-radius: 8px;
+    padding: 16px;
+}
+.markdownContent {
+    color: #BCBCBC;
+}

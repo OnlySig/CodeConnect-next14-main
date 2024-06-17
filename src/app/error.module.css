@@ -1,0 +1,21 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+.subTitle {
+    font-size: 37px;
+    color: #81FE88;
+}
+.spanContent {
+    color: #BCBCBC;
+    font-weight: 400;
+    font-size: 26px;
+}
+.linkContent {
+    color: #BFFFC3;
+    font-size: 18px;
+}

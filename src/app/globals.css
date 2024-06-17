@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+.app-container {
+  display: flex;
+  gap: 27px;
+  max-width: 1200px;
+  margin: 56px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .app-container {
+    position: relative;
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+    .app-container {
+      padding: 0 16px;
+    }
+}
