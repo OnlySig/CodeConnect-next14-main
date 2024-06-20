@@ -22,13 +22,13 @@ interface PropsPost {
 const CardPost = ({ post, inSlug = false } : { post: PropsPost, inSlug?: boolean }) => {
     return (
         <article className={inSlug ? `${styles.article__container} ${styles.articleSlug__container}` : styles.article__container}>
-            <header className={inSlug ?  `${styles.image__container} ${styles.imageSlug__container}` : styles.image__container}>
+            <header className={styles.image__container}>
                 <figure className={styles.image__item}>
                     <Image 
-                        className={styles.image}
+                        className={inSlug ? `${styles.slugImage} ${styles.image}` : styles.image}
                         alt={`capa do post ${post.title}`}
                         src={post.cover}
-                        width={inSlug ? 960 : 438 }
+                        width={950}
                         height={inSlug ? 300 : 133}
                     />
                 </figure>

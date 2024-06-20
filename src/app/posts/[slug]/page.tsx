@@ -2,18 +2,25 @@ import styles from './PageSlug.module.css'
 import CardPost from "@/components/CardPost"
 import { IPost } from "@/interfaces/IPosts"
 import logger from "@/logger"
+import db from '../../../../prisma/db'
 import { remark } from 'remark'
-import html from 'remark-html'
+import html from 'remark-html';
+import { redirect } from 'next/navigation'
+import InputSearch from '@/components/InputSeach'
 
-const getPostBtSlug = async (slug : string) => {
+const getPostBySlug = async (slug : string): Promise<IPost | null> => {
     try {
-        const resp = await fetch(`http://localhost:3042/posts?slug=${slug}`)
-        if(!resp.ok) {
-            logger.error('erro na rede!')
-            return {}
+        const post = await db.post.findFirst({
+            include: {
+                author: true
+            },
+            where: { //esse where é como se fosse um filter e o parâmetro é p slug
+                slug, //forma abreviada de fazer assim: slug: slug
+            }
+        })
+        if(!post) {
+            throw new Error(`Post com o slug: ${slug}, não foi encontrado.`)
         }
-        const data = await resp.json()
-        const post = data[0]
         const processedContent = await remark()
             .use(html)
             .process(post.markdown)
@@ -22,8 +29,8 @@ const getPostBtSlug = async (slug : string) => {
         return post
     } catch (error) {
         logger.error(`${(error as Error).message}`)
-        return {}
     }
+    redirect("/not-found")
 }
 
 interface propsParams {
@@ -31,14 +38,15 @@ interface propsParams {
 }
 
 const PageSlug = async ({ params } : { params: propsParams }) => {
-    const post : IPost = await getPostBtSlug(params.slug) 
+    const post : IPost | null = await getPostBySlug(params.slug)     
     return (
         <section className={styles.container__post}>
-            <CardPost post={post} inSlug/>
+            <InputSearch/>
+            <CardPost post={post!} inSlug/>
             <section className={styles.contentCode}>
                 <h2 className={styles.subTitleSlug}>Código:</h2>
                 <footer className={styles.footerSlug__container}>
-                    <div className={styles.markdownContent} dangerouslySetInnerHTML={{ __html: post.markdown }} />
+                    <div className={styles.markdownContent} dangerouslySetInnerHTML={{ __html: post!.markdown }} />
                 </footer>
             </section>
         </section>

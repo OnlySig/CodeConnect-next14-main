@@ -1,0 +1,35 @@
+.input__container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 4px;
+}
+.inputContent {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 9px 16px;
+    background-color: #171D1F;
+    width: 100%;
+}
+.inpSearch {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #BCBCBC;
+    font-size: 22px;
+    font-weight: 500;
+}
+.btn__Search {
+    cursor: pointer;
+    color: #132E35;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #81FE88;
+    border: none;
+    padding: 12px 16px;
+}

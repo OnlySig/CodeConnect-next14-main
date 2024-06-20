@@ -1,7 +1,7 @@
 .container__post {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    /* width: 1000px; */
 }
 .contentCode {
     margin-top: 24px;

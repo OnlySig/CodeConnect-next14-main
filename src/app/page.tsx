@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import logger from "@/logger"
 import Link from "next/link"
 import db from "../../prisma/db"
+import InputSearch from "@/components/InputSeach"
 
 interface PropsPost {
   data: IPost[]
@@ -17,13 +18,23 @@ interface PropsSearch {
 
 const getAllPosts = async (page : number) => {
   try {
+    const perPage = 6
+    const skip = (page - 1) * perPage //esse skip, ele passa tantos elementos assim q vc quiser. nesse exemplo ele pega page q é 1 (na primeira pagina) e faz (1 - 1) * perPage = 0, assim ele n skipa nada na primeira pagina.
+    const totalItens = await db.post.count() // esse rapaz traz o "length" do db
+    const totalPages = Math.ceil(totalItens / perPage) // esse ceil do javascript arredonda o numero, e a logica é pegar totalItens e dividir por perPage, naqual limita a qtd de paginas no take la em posts
+    const prev = page > 1 ? page - 1 : null //logica do prev, paginação maior q 1 ? page -1, é menor q 1 ? recebe null
+    const next = page < totalPages ? page + 1 : null //logica do next, paginação menor que totalPages ? page + 1, paginação igual a totalPages ? recebe null
+
     const posts = await db.post.findMany({
-      include: {
+      take: perPage, // [PAGINAÇÃO] PEGA APENAS 6 ELEMENTOS DA NOSSA PÁGINA
+      skip,
+      orderBy: { createdAt: 'desc' }, // [ORDENAÇÃO] ESTAMOS ORDENANDO NOSSO BD EM createdAt
+      include: { //esse bd necessita de um outro schema, fulgo User, esse author é justamente a chave estrangeira, e tem q fazer assim pra INCLUIR no posts
         author: true
       }
     })
     logger.info('deu tudo certo, graças a Deus')
-    return { data: posts, prev: null, next: null }
+    return { data: posts, prev: prev, next: next }
   } catch (error) {
     logger.error('Falha ao obter posts', { error })
     return { data: [], prev: null, next: null }
@@ -31,20 +42,21 @@ const getAllPosts = async (page : number) => {
 }
 
 export default async function Home({ searchParams } : { searchParams : PropsSearch } ) {
-  const currentPage = Number(searchParams?.page) || 1
+  const currentPage = parseInt(searchParams?.page) || 1
   const { data, prev, next } : PropsPost = await getAllPosts(currentPage)
 
   return (
-    <div className={styles.content}>
-      <section className={styles.posts__container}>
-        {
-          data.map(post=> <CardPost key={post.id} post={post}/>)
-        }
-      </section>
-      <footer className={ !prev || !next ? `${styles.footer__container} ${styles.footer__center}` : styles.footer__container }>
-        {prev && <Link className={styles.ancor_page} href={`/?page=${prev}`}>Página anterior</Link>}
-        {next && <Link className={styles.ancor_page} href={`/?page=${next}`}>Próxima página</Link>}
-      </footer>
+  <div className={styles.content}>
+    <InputSearch />
+    <section className={styles.posts__container}>
+      {
+        data.map(post=> <CardPost key={post.id} post={post}/>)
+      }
+    </section>
+    <footer className={ !prev || !next ? `${styles.footer__container} ${styles.footer__center}` : styles.footer__container }>
+      {prev && <Link className={styles.ancor_page} href={`/?page=${prev}`}>Página anterior</Link>}
+      {next && <Link className={styles.ancor_page} href={`/?page=${next}`}>Próxima página</Link>}
+    </footer>
     </div>
   )
 }
