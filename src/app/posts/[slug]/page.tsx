@@ -14,8 +14,8 @@ const getPostBySlug = async (slug : string): Promise<IPost | null> => {
             include: {
                 author: true
             },
-            where: { //esse where é como se fosse um filter e o parâmetro é p slug
-                slug, //forma abreviada de fazer assim: slug: slug
+            where: { //esse where é como se fosse um filter e o parâmetro é o slug
+                slug, //forma abreviada de fazer assim: slug: slug, pois o where é um objeto e como objeto podemos assim abreviar
             }
         })
         if(!post) {

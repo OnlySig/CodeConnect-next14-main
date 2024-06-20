@@ -3,13 +3,13 @@ import Search from '../Icons/Search'
 
 const InputSearch = () => {
   return (
-    <div className={styles.input__container}>
+    <form className={styles.input__container} action='/'>
         <div className={styles.inputContent}>
             <Search />
-            <input className={styles.inpSearch} type="text" placeholder='Digite o que vocè procura'/>
+            <input className={styles.inpSearch} type="text" placeholder='Digite o que vocè procura' name='q'/>
         </div>
         <button className={styles.btn__Search}>Buscar</button>
-    </div>
+    </form>
   )
 }
 
