@@ -1,0 +1,10 @@
+.btnPost {
+    padding: 12px 16px;
+    color: #132E35;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #81FE88;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}

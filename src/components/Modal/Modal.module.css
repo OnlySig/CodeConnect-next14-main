@@ -1,0 +1,23 @@
+.dialog__container {
+    width: 100%;
+    max-width: 960px;
+    padding: 24px;
+    margin: auto;
+    border-radius: 32px;
+    border: none;
+    background-color: #3E3E3F;
+}
+
+.dialog__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.dialog__btnExit {
+    background-color: transparent;
+    color: #E1E1E1;
+    border: none;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+}

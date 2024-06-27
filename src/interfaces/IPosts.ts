@@ -1,3 +1,4 @@
+import { IComment } from "./IComment";
 import { IUser } from "./IUser";
 
 export interface IPost {
@@ -6,8 +7,10 @@ export interface IPost {
     title: string;
     slug: string;
     body: string;
+    likes?: number;
     markdown: string;
     createdAt?: Date;
     updatedAt?: Date;
     author: IUser;
+    comments?: IComment[]
 }

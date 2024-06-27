@@ -25,7 +25,7 @@
     padding: 16px 16px;
 }
 .sectionSlug__container {
-    height: 198px;
+    height: auto;
 }
 .title__section__item {
     color: #BCBCBC;
@@ -41,7 +41,21 @@
 .ancor__section__item {
     color: #81FE88;
 }
-
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+.icon__container {
+    display: flex;
+    gap: 16px;
+    text-align: center;
+}
+.icon__container p {
+    color: #888888;
+    font-size: 15px;
+}
 @media screen and (max-width:1200px) {
     .image {
         width: 700px;
@@ -53,7 +67,6 @@
     }
 }
 @media screen and (max-width: 700px) {
-
     .image {
         width: 350px;
         background-size: contain;

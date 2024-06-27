@@ -14,10 +14,34 @@
 }
 .footerSlug__container {
     background-color: #171D1F;
-    height: 252px;
     border-radius: 8px;
     padding: 16px;
 }
 .markdownContent {
     color: #BCBCBC;
+}
+.comments__container {
+    margin-top: 40px;
+    padding: 32px;
+    background-color: #888888;
+    display: flex;
+    flex-direction: column;
+}
+.title__comments {
+    margin-bottom: 8px;
+}
+.listItem {
+    list-style: none;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3E3E3F;
+}
+.noComments {
+    text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+    .footerSlug__container {
+        padding: 0;
+    }
 }

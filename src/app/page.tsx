@@ -19,7 +19,7 @@ interface PropsSearch {
 
 const getAllPosts = async (page: number, query: string) => {
   try {
-    const where : { title?: { contains: any,  mode: any} } = {}
+    const where : { title?: { contains: any,  mode: any } } = {}
     if(query) {
       where.title = {
         contains: query,
@@ -37,9 +37,10 @@ const getAllPosts = async (page: number, query: string) => {
       take: perPage, // [PAGINAÇÃO] PEGA APENAS 6 ELEMENTOS DA NOSSA PÁGINA
       skip,
       where,
-      orderBy: { createdAt: 'desc' }, // [ORDENAÇÃO] ESTAMOS ORDENANDO NOSSO BD EM createdAt
+      orderBy: { id: 'desc' }, // [ORDENAÇÃO] ESTAMOS ORDENANDO NOSSO BD EM createdAt
       include: { //esse bd necessita de um outro schema, fulgo User, esse author é justamente a chave estrangeira, e tem q fazer assim pra INCLUIR no posts
-        author: true
+        author: true,
+        comments: true
       }
     })
     logger.info('deu tudo certo, graças a Deus')

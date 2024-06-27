@@ -3,23 +3,14 @@ import React from 'react'
 import Avatar from '../Avatar'
 import styles from './CardPost.module.css'
 import Link from 'next/link';
+import { incrementThumbsUp, postComment } from '@/actions';
+import ThumbsUpButton from './ThumbsUpButton';
+import ModalComment from '../ModalComment';
+import { IPost } from '@/interfaces/IPosts';
 
-interface PropsPost {
-    id: number;
-    cover: string;
-    title: string;
-    slug: string;
-    body: string;
-    markdown: string;
-    author: {
-        id: number;
-        name: string;
-        username: string;
-        avatar: string;
-    };
-}
-
-const CardPost = ({ post, inSlug = false } : { post: PropsPost, inSlug?: boolean }) => {
+const CardPost = ({ post, inSlug = false } : { post: IPost, inSlug?: boolean }) => {
+    const submitThumbsUp = incrementThumbsUp.bind(null, post)
+    const submitComment = postComment.bind(null, post)
     return (
         <article className={inSlug ? `${styles.article__container} ${styles.articleSlug__container}` : styles.article__container}>
             <header className={styles.image__container}>
@@ -38,6 +29,18 @@ const CardPost = ({ post, inSlug = false } : { post: PropsPost, inSlug?: boolean
                 <p className={styles.paragraf__section}>{post.body}</p>
                 {!inSlug && <Link className={styles.ancor__section__item} href={`/posts/${post.slug}`}>Ver detalhes</Link>}
                 <footer className={styles.footer__container}>
+                    <div className={styles.icon__container}>
+                        <div>
+                            <form action={submitThumbsUp}>
+                                <ThumbsUpButton/>
+                            </form>
+                            <p>{post.likes}</p>
+                        </div>
+                        <div>
+                            <ModalComment action={submitComment}/>
+                            <p>{post.comments?.length}</p>
+                        </div>
+                    </div>
                     <Avatar image={post.author.avatar} name={post.author.username}/>
                 </footer>
             </section>
