@@ -67,12 +67,12 @@ const PageSlug = async ({ params } : { params: propsParams }) => {
             <div className={styles.comments__container}>
                 <h1 className={styles.title__comments}>Comentários</h1>
                 <ul>
-                    { post?.comments?.length ? post?.comments?.map(comentario => 
+                    {post?.comments?.length ? post?.comments?.map(comentario => 
                         <li className={styles.listItem} key={comentario.id}>
                             <Comment comentario={comentario}/>
                             <Replies comment={comentario}/>
                         </li>
-                    ) : <h1 className={styles.noComments}>Sem comentários, seja o primeiro! \(o_o)/</h1> }
+                    ) : <h1 className={styles.noComments}>Sem comentários, seja o primeiro! \(o_o)/</h1>}
                 </ul>
             </div>
         </section>

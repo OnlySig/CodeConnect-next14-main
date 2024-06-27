@@ -1,11 +1,31 @@
-.commentReply__container {
-    margin: 8px 0;
+.form__modalReply{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 30px;
 }
-.comment__item {
+.textArea__modalReply{
+    width: 100%;
+    background-color: #BCBCBC;
+    font-size: 18px;
+    font-weight: 500;
+    color: #3E3E3F;
+    padding: 10px;
+    border-radius: 8px;
+}
+.infoModalReply {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+.infoTitle {
+    color: #81FE88;
+    font-weight: 700;
+}
+.infoText {
+    color: #E1E1E1;
+}
+.btn__reply {
+    display: flex;
+    justify-content: flex-end;
 }

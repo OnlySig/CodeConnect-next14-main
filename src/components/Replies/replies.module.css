@@ -24,3 +24,18 @@
 .replies ul {
     padding-left: 40px;
 }
+.comment__item {
+    margin-top: 16px;
+    list-style: none;
+}
+.iconName {
+    display: flex;
+    gap: 8px;
+}
+.reply__text {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
