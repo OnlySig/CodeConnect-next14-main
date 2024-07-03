@@ -6,8 +6,8 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import avatarDefault from "./empty-avatar.png"
 
 const ProfileImageUploader = ({ user } : { user: IUser }) => {
-    const [imgSrc, setImgSrc] = useState<string | StaticImageData >(user.image ?? user.avatar ?? avatarDefault)
-    const [newAvatar, setNewAvatar] = useState<string | StaticImageData>()
+    const [imgSrc, setImgSrc] = useState<any>(user.image ?? user.avatar ?? avatarDefault)
+    const [newAvatar, setNewAvatar] = useState<any>()
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files![0]
         if(file) {

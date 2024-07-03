@@ -45,7 +45,10 @@ export const options: any = {
                         if(passMatch) {
                             console.log('user correto!')
                             delete foundUser.password
-                            return foundUser
+                            return {
+                                ...foundUser,
+                                id: foundUser.id.toString()
+                            }
                         }
                     }
                 } catch (error) {
