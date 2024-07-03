@@ -1,3 +1,7 @@
+.commentModalReply {
+    display: flex;
+    align-items: center;
+}
 .form__modalReply{
     width: 100%;
     display: flex;
@@ -17,13 +21,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-}
-.infoTitle {
-    color: #81FE88;
-    font-weight: 700;
-}
-.infoText {
-    color: #E1E1E1;
 }
 .btn__reply {
     display: flex;

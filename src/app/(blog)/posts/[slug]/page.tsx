@@ -2,13 +2,13 @@ import styles from './PageSlug.module.css'
 import CardPost from "@/components/CardPost"
 import { IPost } from "@/interfaces/IPosts"
 import logger from "@/logger"
-import db from '../../../../prisma/db'
 import { remark } from 'remark'
 import html from 'remark-html';
 import { redirect } from 'next/navigation'
 import InputSearch from '@/components/InputSeach'
 import Comment from '@/components/Comment'
 import Replies from '@/components/Replies'
+import db from '../../../../../prisma/db'
 
 const getPostBySlug = async (slug : string): Promise<IPost | null> => {
     try {
@@ -56,7 +56,6 @@ const PageSlug = async ({ params } : { params: propsParams }) => {
     const post : IPost | null = await getPostBySlug(params.slug)   
     return (
         <section className={styles.container__post}>
-            <InputSearch/>
             <CardPost post={post!} inSlug/>
             <section className={styles.contentCode}>
                 <h2 className={styles.subTitleSlug}>Código:</h2>
@@ -69,7 +68,7 @@ const PageSlug = async ({ params } : { params: propsParams }) => {
                 <ul>
                     {post?.comments?.length ? post?.comments?.map(comentario => 
                         <li className={styles.listItem} key={comentario.id}>
-                            <Comment comentario={comentario}/>
+                            <Comment comentario={comentario} isMainComment/>
                             <Replies comment={comentario}/>
                         </li>
                     ) : <h1 className={styles.noComments}>Sem comentários, seja o primeiro! \(o_o)/</h1>}

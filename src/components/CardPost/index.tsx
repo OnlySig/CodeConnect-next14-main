@@ -41,7 +41,7 @@ const CardPost = ({ post, inSlug = false } : { post: IPost, inSlug?: boolean }) 
                             <p>{post.comments?.length}</p>
                         </div>
                     </div>
-                    <Avatar image={post.author.avatar} name={post.author.username}/>
+                    {post.author.image || post.author.avatar && <Avatar image={post.author.avatar ?? post.author.image} name={post.author.username ?? ''}/>}
                 </footer>
             </section>
         </article>

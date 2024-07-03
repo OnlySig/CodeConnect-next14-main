@@ -3,8 +3,7 @@ import { IPost } from "@/interfaces/IPosts"
 import styles from './page.module.css'
 import logger from "@/logger"
 import Link from "next/link"
-import db from "../../prisma/db"
-import InputSearch from "@/components/InputSeach"
+import db from "../../../prisma/db"
 
 interface PropsPost {
   data: IPost[]
@@ -58,7 +57,6 @@ export default async function Home({ searchParams } : { searchParams : PropsSear
 
   return (
   <div className={styles.content}>
-    <InputSearch />
     <section className={styles.posts__container}>
       {
         data.length === 0 

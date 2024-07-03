@@ -1,0 +1,43 @@
+.formAuth__loginContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+}
+.radioForget__container {
+    display: flex;
+    justify-content: space-between;
+}
+.radioForget__container a {
+    color: #E1E1E1;
+}
+.radio__content{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.radio__content span {
+    color: #888;
+    font-size: 15px;
+}
+.btnLogin__container {
+    text-align: center;
+    margin: 16px 0 32px 0;
+}
+.btnLogin {
+    padding: 12px 16px;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+    background-color: #81FE88;
+    border: none;
+    cursor: pointer;
+}
+.btnLogin span{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #132E35;
+}

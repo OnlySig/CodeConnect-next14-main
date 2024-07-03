@@ -1,3 +1,13 @@
+.reply__content {
+    display: flex;
+    gap: 8px;
+    color: #81FE88;
+    font-weight: 700;
+}
+.reply__comment {
+    margin: -3px 0 0 8px;
+    color: #E1E1E1;
+}
 .container__comment {
     padding-bottom: 12px;
 }
@@ -6,6 +16,9 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 10px;
+}
+.image__comment {
+    border-radius: 50%;
 }
 .comment {
     display: flex;

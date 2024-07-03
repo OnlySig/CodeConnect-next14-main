@@ -22,10 +22,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={prompt.className}>
       <body>
-        <div className="app-container">
-          <Aside/>
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

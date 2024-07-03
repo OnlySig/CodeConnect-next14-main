@@ -4,16 +4,17 @@ import React from 'react'
 import Image from 'next/image'
 import ModalReply from '../ModalReply'
 
-const Comment = ({ comentario } : {comentario : IComment}) => {
+const Comment = ({ comentario, className ,isMainComment = false } : {comentario : IComment, isMainComment?: boolean, className?: string}) => {
+    const imgSrc = comentario.author?.avatar ?? comentario.author?.image
     return (
-        <div className={styles.container__comment}>
-            <div className={styles.content__comment}>
-                <Image src={comentario.author?.avatar!} alt={comentario.author?.name!} width={32} height={32}/>
+        <div className={className ? className : styles.container__comment}>
+            <div className={className ? styles.reply__content : styles.content__comment}>
+                {imgSrc && <Image src={imgSrc} className={styles.image__comment} alt={comentario.author?.name!} width={32} height={32}/>}
                 <h3>@{comentario.author?.name}</h3>
             </div>
-            <div className={styles.comment}>
+            <div className={className ? styles.reply__comment : styles.comment}>
                 <p>{comentario.text}</p>
-                <ModalReply comment={comentario}/>
+                {isMainComment && <ModalReply comment={comentario}/>}
             </div>
         </div>
     )
