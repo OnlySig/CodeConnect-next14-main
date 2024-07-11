@@ -1,11 +1,28 @@
+'use client'
+
+import { signIn } from 'next-auth/react'
 import ArrowFoward from '../Icons/ArrowFoward'
 import InputAuth from '../InputAuth'
 import styles from './FormLogin.module.css'
 import Link from 'next/link'
+import { useState } from 'react'
 const FormLogin = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    
+    const loginAttempt = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        signIn('credentials', {
+            callbackUrl: '/',
+            email,
+            password
+        })
+    }
     return (
-        <form className={styles.formAuth__loginContainer} >
-            <InputAuth 
+        <form className={styles.formAuth__loginContainer} onSubmit={loginAttempt}>
+            <InputAuth
+                onChange={e=>setEmail(e.target.value)}
+                value={email}
                 name='user'
                 required 
                 isLabel 
@@ -15,11 +32,13 @@ const FormLogin = () => {
                 type='text'
             />
             <InputAuth
+                onChange={e=>setPassword(e.target.value)}
+                value={password}
                 name='password'
                 required
                 isLabel
                 label='Senha'
-                placeholder='*****'
+                placeholder='digite a sua senha'
                 type='password'
                 id='senha'
             />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import './globals.css'
 import { Prompt } from 'next/font/google'
 import Aside from "@/components/Aside";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const prompt = Prompt({
   weight: ['400', '600'],
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={prompt.className}>
       <body>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

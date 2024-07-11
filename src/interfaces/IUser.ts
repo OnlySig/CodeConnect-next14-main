@@ -12,6 +12,7 @@ export interface IUser {
     emailVerified?: Date
     image?: string
     password?: string
+    bio?: string
     Post?: IPost[]
     comments?: IComment | null
     Account?: IAccount[]

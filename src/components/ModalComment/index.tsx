@@ -5,6 +5,7 @@ import IconButton from '../IconButton'
 import { Chat } from '../Icons/Chat'
 import styles from './ModalComponent.module.css'
 import SubmitButton from '../SubmitButton'
+import { useSession } from 'next-auth/react'
 
 const ModalComment = ({ action } : { action : (formData: FormData) => Promise<void>}) => {
     const [textArea, setTextArea] = useState('')
@@ -13,6 +14,7 @@ const ModalComment = ({ action } : { action : (formData: FormData) => Promise<vo
         modalRef.current?.closeModal()
         setTextArea('')
     }
+    const { data: session } = useSession()
     return (
         <>
             <Modal ref={modalRef}>
@@ -26,7 +28,7 @@ const ModalComment = ({ action } : { action : (formData: FormData) => Promise<vo
                     </div>
                 </form>
             </Modal>
-            <IconButton onClick={()=>modalRef.current?.openModal()}>
+            <IconButton disabled={!session} onClick={()=>modalRef.current?.openModal()}>
                 <Chat />
             </IconButton>
         </>

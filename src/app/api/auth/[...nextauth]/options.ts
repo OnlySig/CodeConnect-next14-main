@@ -65,5 +65,8 @@ export const options: any = {
             }
             return session
         }
+    },
+    pages: {
+        signIn: '/signin'
     }
 }

@@ -1,0 +1,51 @@
+.profile__container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 1000px;
+    list-style: none;
+}
+.profile__content {
+    list-style: none;
+}
+.top__profile {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+.btnEditar__profile {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #888;
+    color: #888;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.nickname__profile {
+    color: #888;
+    font-weight: 600;
+}
+.username__profile {
+    color: #81FE88;
+    margin-bottom: 16px;
+}
+.bio__profile {
+    color: #3E3E3F;
+}
+.btnEditar__profile:hover {
+    border: 1px solid #81FE88;
+    color: #81FE88;
+}
+.profile__image {
+    border-radius: 50%;
+    border: 2px solid #3E3E3F;
+}
+.off {
+    display: none;
+}

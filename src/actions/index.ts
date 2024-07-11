@@ -34,8 +34,8 @@ export async function postComment(post: IPost, formData: FormData) {
     // })
 
     const session : ISession | null = await getServerSession(options) 
-    if(session === null) {
-        throw new Error('loga ai pls') 
+    if(!session) {
+        redirect('/api/auth/signin')
     }
     const text = formData.get('text')
     if(typeof text !== 'string') {
