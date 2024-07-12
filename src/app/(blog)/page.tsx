@@ -60,7 +60,7 @@ export default async function Home({ searchParams } : { searchParams : PropsSear
     <section className={styles.posts__container}>
       {
         data.length === 0 
-          ? <h1>Make the L</h1> 
+          ? <h1>Está vazio...</h1> 
           : data.map(post=> <CardPost key={post.id} post={post}/>)
       }
     </section>

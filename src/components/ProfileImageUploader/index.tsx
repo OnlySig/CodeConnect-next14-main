@@ -9,7 +9,7 @@ import Loader from "../Loader"
 import InputAuth from "../InputAuth"
 import { revalidatePath } from "next/cache"
 
-const ProfileImageUploader = ({ user } : { user: IUser }) => {
+const ProfileImageUploader = ({ user } : { user: any }) => {
     const [pedding, setPedding] = useState(true)
     const [imgSrc, setImgSrc] = useState<any>(user.image ?? user.avatar ?? avatarDefault)
     const [username, setUsername] = useState(user.username)
